@@ -1,0 +1,10 @@
+{
+  "editor.snippedSuggestions": "top",
+  "editor.formatOnSave": true,
+  "prettier.tabWidth": 2,
+  "prettier.single.Quote": true,
+  "prettier.trialingComma": "all",
+  "prettier.semi": true,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.pringWidth": 100
+}
