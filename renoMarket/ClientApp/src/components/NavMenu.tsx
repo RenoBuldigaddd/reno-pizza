@@ -9,7 +9,8 @@ import {
   NavLink,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import "./NavMenu.css";
+import "../scss/app.scss";
+import pizzalogo from "../assets/img/pizza-logo.svg";
 
 export default class NavMenu extends React.PureComponent<
   {},
@@ -23,11 +24,17 @@ export default class NavMenu extends React.PureComponent<
     return (
       <header>
         <Navbar
-          className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3"
+          className="navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 "
           light>
           <Container>
             <NavbarBrand tag={Link} to="/">
-              renoMarket
+              <div className="header__logo">
+                <img width="55" src={pizzalogo} alt="Pizza logo" />
+                <div>
+                  <h1>RReno Pizza</h1>
+                  <p>The best pizza in universe</p>
+                </div>
+              </div>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggle} className="mr-2" />
             <Collapse
@@ -41,13 +48,23 @@ export default class NavMenu extends React.PureComponent<
                   </NavLink>
                 </NavItem>
                 <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/products">
+                    Products
+                  </NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/cart">
                     Cart
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">
-                    Fetch data
+                  <NavLink tag={Link} className="text-dark" to="/signin">
+                    Sign in
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/profile">
+                    Profile
                   </NavLink>
                 </NavItem>
               </ul>

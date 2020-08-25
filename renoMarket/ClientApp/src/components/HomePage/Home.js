@@ -1,447 +1,332 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Container, NavLink } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Container } from "reactstrap";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import Slider from "./components/Slider";
+import images from "./images";
 
-import "../../scss/app.scss";
-
-import pizzalogo from "../../assets/img/pizza-logo.svg";
+import "./Home.scss";
+import background from "../../assets/img/HomePage/background.jpg";
+import background2 from "../../assets/img/HomePage/background2.jpg";
+import background3 from "../../assets/img/HomePage/background3.jpg";
+import desk1 from "../../assets/img/HomePage/desk.png";
+import panda from "../../assets/img/HomePage/gif/panda.gif";
+import unicorn from "../../assets/img/HomePage/gif/unicorn.gif";
+import poo from "../../assets/img/HomePage/gif/poo.gif";
+import chicken from "../../assets/img/HomePage/gif/chicken.gif";
 
 class Home extends React.PureComponent {
-  state = {};
+  state = { isOpen: false };
   render() {
     return (
-      // <React.Fragment>
-      //   <Container className="jumbotron col col-md-6">
-      //<form>
-      <div className="wrapper">
-        <div className="header">
-          <div className="container">
-            <div className="header__logo">
-              <img width="38" src={pizzalogo} alt="Pizza logo" />
-              <div>
-                <h1>RReno Pizza</h1>
-                <p>самая вкусная пицца во вселенной</p>
-              </div>
-            </div>
-            <div className="header__cart">
-              <a href="/cart" className="button button--cart">
-                <span>129 ₴</span>
-                <div className="button__delimiter"></div>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M6.33333 16.3333C7.06971 16.3333 7.66667 15.7364 7.66667 15C7.66667 14.2636 7.06971 13.6667 6.33333 13.6667C5.59695 13.6667 5 14.2636 5 15C5 15.7364 5.59695 16.3333 6.33333 16.3333Z"
-                    stroke="white"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M14.3333 16.3333C15.0697 16.3333 15.6667 15.7364 15.6667 15C15.6667 14.2636 15.0697 13.6667 14.3333 13.6667C13.597 13.6667 13 14.2636 13 15C13 15.7364 13.597 16.3333 14.3333 16.3333Z"
-                    stroke="white"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4.78002 4.99999H16.3334L15.2134 10.5933C15.1524 10.9003 14.9854 11.176 14.7417 11.3722C14.4979 11.5684 14.1929 11.6727 13.88 11.6667H6.83335C6.50781 11.6694 6.1925 11.553 5.94689 11.3393C5.70128 11.1256 5.54233 10.8295 5.50002 10.5067L4.48669 2.82666C4.44466 2.50615 4.28764 2.21182 4.04482 1.99844C3.80201 1.78505 3.48994 1.66715 3.16669 1.66666H1.66669"
-                    stroke="white"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span>3</span>
-              </a>
+      <React.Fragment>
+        <Container>
+          {/* 
+                <a href="#" className="btn btn-md text-center">
+                  GET STARTED
+                </a>
+              }
+
+          {/* <!--- Image Slider --> */}
+          <div className="container-md container-fluid padding">
+            <div className="row padding">
+              {/* <Slider slides={images} /> */}
             </div>
           </div>
-        </div>
-        <div className="content">
-          <div className="container">
-            <div className="content__top">
-              <div className="categories">
-                <ul>
-                  <li className="active">Все</li>
-                  <li>Мясные</li>
-                  <li>Вегетарианская</li>
-                  <li>Гриль</li>
-                  <li>Острые</li>
-                  <li>Закрытые</li>
-                </ul>
-              </div>
-              <div className="sort">
-                <div className="sort__label">
-                  <svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
-                      fill="#2C2C2C"
-                    />
-                  </svg>
-                  <b>Сортировка по:</b>
-                  <span>популярности</span>
+
+          <div className="carousel slide" id="slides">
+            <ul className="carousel-indicators">
+              <li
+                data-target="#slides"
+                data-slide-to="0"
+                className="active"></li>
+              <li data-target="#slides" data-slide-to="1"></li>
+              <li data-target="#slides" data-slide-to="2"></li>
+            </ul>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img src={background} alt="firstSlide" />
+                <img />
+                <div className="carousel-caption">
+                  <h1 className="display-2">Bootstrap</h1>
+                  <h3>Complete Website Layout</h3>
+                  <button
+                    type="button"
+                    className="btn btn-outline-light btn-lg">
+                    VIEW DEMO
+                  </button>
+                  <button type="button" className="btn btn-primary btn-lg">
+                    Get Started
+                  </button>
                 </div>
-                <div className="sort__popup">
-                  <ul>
-                    <li className="active">популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
-                  </ul>
+              </div>
+              <div className="carousel-item">
+                <img src={background2} alt="secondtSlide" />
+                <img />
+              </div>
+              <div className="carousel-item">
+                <img src={background3} alt="thirdSlide" />
+                <img />
+              </div>
+            </div>
+          </div>
+          {/* <!--- Jumbotron --> */}
+          <div className="container-fluid">
+            <div className="row jumbotron">
+              <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                <p className="leed">
+                  ssdsdsdasdasd asfadsgfknascoklnas skd aoksd mnkams smd kmkoams
+                  dklmas Web.
+                </p>
+              </div>
+              <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <a href="#">
+                  <button
+                    type="button"
+                    className="btn btn-outline-secondary btn-lg">
+                    Web Hosting
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          {/* <!--- Welcome Section --> */}
+          <div className="container-fluid padding">
+            <div className="row welcome text-center">
+              <div className="col-12">
+                <h1 className="display-4">Build with ease.</h1>
+              </div>
+              <hr />
+              <div className="col-12">
+                <p className="lead">
+                  Welcome to my adaptive site on bootstrap!
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* <!--- Three Column Section --> */}
+          <div className="container-fluid padding">
+            <div className="row text-center padding">
+              <div className="col-xs12 col-sm-6 col-md-4">
+                <i className="fas fa-code"></i>
+                <h3>HTML5</h3>
+                <p>Build with the latest version of HTML, HTML 5.</p>
+              </div>
+              <div className="col-xs12 col-sm-6 col-md-4">
+                <i className="fas fa-bold"></i>
+                <h3>BOOTSTRAP</h3>
+                <p>Build with the latest version of Bootstrap, Bootstrap 4.</p>
+              </div>
+              <div className="col-sm-12 col-md-4">
+                <i className="fab fa-css3"></i>
+                <h3>CSS</h3>
+                <p>Build with the latest version of CSS, CSS 3.</p>
+              </div>
+            </div>
+            <hr className="my-4" />
+          </div>
+          {/* <!--- Two Column Section --> */}
+          <div className="container-fluid padding">
+            <div className="row padding">
+              <div className="col-md-12 col-lg-6">
+                <h2 className="">If you biuld it</h2>
+                <p>
+                  The collums will automatically stack on top of each other when
+                  screen is less than 576px wide.
+                </p>
+                <p>SMTN Shit</p>
+                <p>Pro developer</p>
+                <br />
+                <a href="#" className="btn btn-primary">
+                  {" "}
+                  Learn more
+                </a>
+              </div>
+              <div className="col-lg-6">
+                <img src={desk1} alt="desk" className="img-fluid" />
+              </div>
+            </div>
+          </div>
+          <hr className="my-4" />
+          {/* <!--- Fixed background --> */}
+          <figure>
+            <div className="fixed-wrap">
+              <div className="" id="fixed"></div>
+            </div>
+          </figure>
+          {/* <!--- Emoji Section --> */}
+          <button className="fun" data-toggle="collapse" data-target="#emoji">
+            click for fun
+          </button>
+          <div className="collapse" id="emoji">
+            <div className="container-fluid padding">
+              <div className="row text-center">
+                <div className="col-sm-6 col-md-3">
+                  <img src={panda} className="gif" alt="" />
+                  <img />
+                </div>
+                <div className="col-sm-6 col-md-3">
+                  <img src={chicken} className="gif" alt="" />
+                  <img />
+                </div>
+                <div className="col-sm-6 col-md-3">
+                  <img src={poo} className="gif" alt="" />
+                  <img />
+                </div>
+                <div className="col-sm-6 col-md-3">
+                  <img src={unicorn} className="gif" alt="" />
+                  <img />
                 </div>
               </div>
             </div>
-            <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
+          </div>
+          {/* <!--- Meet the team --> */}
+          <div className="container-fluid padding">
+            <div className="row text-center">
+              <div className="col-12">
+                <h1 className="display-4">Meat the Team</h1>
+              </div>
+              <hr />
+            </div>
+          </div>
+          {/* <!--- Cards --> */}
+          <div className="container-fluid padding">
+            <div className="row padding">
+              <div className="col-md-4">
+                <div className="card">
+                  <img src="img/team1.png" className="card-img-top" alt="" />
+                  <img />
+                  <div className="card-body">
+                    <h4 className="card-title">John Doe</h4>
+                    <p className="card-text">John is an Internet dodik</p>
+                    <a href="#" className="btn btn-outline-secondary">
+                      See Profile
+                    </a>
                   </div>
                 </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
+              </div>
+
+              <div className="col-md-4">
+                <div className="card">
+                  <img src="img/team2.png" className="card-img-top" alt="" />
+                  <img />
+                  <div className="card-body">
+                    <h4 className="card-title">Melania Trump</h4>
+                    <p className="card-text">First lady dick</p>
+                    <a href="#" className="btn btn-outline-secondary">
+                      See Profile
+                    </a>
                   </div>
                 </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
-                  </div>
-                </div>
-              </div>{" "}
-              <div className="pizza-block">
-                <img
-                  className="pizza-block__image"
-                  src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-                  alt="Pizza"
-                />
-                <h4 className="pizza-block__title">Чизбургер-пицца</h4>
-                <div className="pizza-block__selector">
-                  <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
-                  </ul>
-                  <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
-                  </ul>
-                </div>
-                <div className="pizza-block__bottom">
-                  <div className="pizza-block__price">от 129 ₴</div>
-                  <div className="button button--outline button--add">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span>Добавить</span>
-                    <i>2</i>
+              </div>
+
+              <div className="col-md-4">
+                <div className="card">
+                  <img src="img/team3.png" className="card-img-top" alt="" />
+                  <img />
+                  <div className="card-body">
+                    <h4 className="card-title">Roby Dilson</h4>
+                    <p className="card-text">
+                      Roby is the second an Internet dodik
+                    </p>
+                    <a href="#" className="btn btn-outline-secondary">
+                      See Profile
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      // </form>
-      //   </Container>
-      // </React.Fragment>
+
+          {/* <!--- Two Column Section --> */}
+          <div className="container-fluid padding">
+            <div className="row padding">
+              <div className="col-md-12 col-lg-6">
+                <h2 className="">Our Philosopy</h2>
+                <p>
+                  sdaspldmadmklsaolsmcpla,csasdklmasdkmasdklmcklm aksmdkapsmdpms
+                  plmasdlmap;lsdm pla;smd plkmasd map;lsdm
+                </p>
+                <p>SMTN Shit</p>
+              </div>
+              <div className="col-lg-6">
+                <img
+                  src="img/bootstrap2.png"
+                  alt="desk"
+                  className="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* <!--- Connect --> */}
+          <div className="container-fluid padding">
+            <div className="row text-center padding">
+              <div className="col-12">
+                <h2>Connect</h2>
+              </div>
+              <div className="col-12 social padding">
+                <a href="#">
+                  <i className="fab fa-facebook"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a href="kartoplyk@gmail.com">
+                  <i className="fab fa-google-plus-g"></i>
+                </a>
+                <a href="https://www.instagram.com/j.kra_v/">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="#">
+                  <i className="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          {/* <!--- Footer --> */}
+
+          <div className="container-fluid padding">
+            <div className="row text-center jumbotron">
+              <div className="col-md-4">
+                <img src="img/w3newbie.png" className="" alt="" />
+                <hr className="light" />
+
+                <p>(38)063 370 4492</p>
+                <p>kartoplyk@gmail.com</p>
+                <p>Kostushka, 40</p>
+                <p>Rivne, Rivnenska Oblast, 00000</p>
+              </div>
+              <div className="col-md-4">
+                <hr className="light" />
+                <h5>Our hours</h5>
+                <hr className="light" />
+                <p>Monday: 9am - 5pm</p>
+                <p>Saturday: 10am - 4pm</p>
+                <p>Sunday: closed</p>
+              </div>
+              <div className="col-md-4">
+                <hr className="light" />
+                <h5>Service area</h5>
+                <hr className="light" />
+
+                <p>City, State, 00000</p>
+                <p>City, State, 00000</p>
+                <p>City, State, 00000</p>
+                <p>City, State, 00000</p>
+              </div>
+              <div className="col-12">
+                <hr className="light" />
+
+                <h5>&copy; kartoplyk@gmail.com</h5>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </React.Fragment>
     );
   }
 }
+
 export default connect()(Home);

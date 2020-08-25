@@ -12,18 +12,11 @@ class Cart extends React.PureComponent {
   render() {
     return (
       <div className="wrapper">
-        <div className="header">
+        {/* <div className="header">
           <div className="container">
-            <div className="header__logo">
-              <img width="38" src="./img/pizza-logo.svg" alt="Pizza logo" />
-              <div>
-                <h1>React Pizza</h1>
-                <p>самая вкусная пицца во вселенной</p>
-              </div>
-            </div>
             <div className="header__cart">
-              <div className="button button--cart">
-                <span>520 ₽</span>
+              <div className="button button--cart ">
+                <span>129 ₴</span>
                 <div className="button__delimiter"></div>
                 <svg
                   width="18"
@@ -57,7 +50,7 @@ class Cart extends React.PureComponent {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="content">
           <div className="container container--cart">
             <div className="cart">
@@ -91,7 +84,7 @@ class Cart extends React.PureComponent {
                       stroke-linejoin="round"
                     />
                   </svg>
-                  Корзина
+                  Cart
                 </h2>
                 <div className="cart__clear">
                   <svg
@@ -130,7 +123,7 @@ class Cart extends React.PureComponent {
                     />
                   </svg>
 
-                  <span>Очистить корзину</span>
+                  <span>Empty cart</span>
                 </div>
               </div>
               <div className="content__items">
@@ -143,8 +136,8 @@ class Cart extends React.PureComponent {
                     />
                   </div>
                   <div className="cart__item-info">
-                    <h3>Сырный цыпленок</h3>
-                    <p>тонкое тесто, 26 см.</p>
+                    <h3>Pizza Milana</h3>
+                    <p>0.5kg.</p>
                   </div>
                   <div className="cart__item-count">
                     <div className="button button--outline button--circle cart__item-count-minus">
@@ -164,7 +157,7 @@ class Cart extends React.PureComponent {
                         />
                       </svg>
                     </div>
-                    <b>2</b>
+                    <b>1</b>
                     <div className="button button--outline button--circle cart__item-count-plus">
                       <svg
                         width="10"
@@ -184,7 +177,7 @@ class Cart extends React.PureComponent {
                     </div>
                   </div>
                   <div className="cart__item-price">
-                    <b>770 ₽</b>
+                    <b>129 ₴</b>
                   </div>
                   <div className="cart__item-remove">
                     <div className="button button--outline button--circle">
@@ -215,8 +208,8 @@ class Cart extends React.PureComponent {
                     />
                   </div>
                   <div className="cart__item-info">
-                    <h3>Сырный цыпленок</h3>
-                    <p>тонкое тесто, 26 см.</p>
+                    <h3>Pizza Milana</h3>
+                    <p>0.5kg.</p>
                   </div>
                   <div className="cart__item-count">
                     <div className="button button--outline button--circle cart__item-count-minus">
@@ -236,7 +229,7 @@ class Cart extends React.PureComponent {
                         />
                       </svg>
                     </div>
-                    <b>2</b>
+                    <b>1</b>
                     <div className="button button--outline button--circle cart__item-count-plus">
                       <svg
                         width="10"
@@ -256,7 +249,7 @@ class Cart extends React.PureComponent {
                     </div>
                   </div>
                   <div className="cart__item-price">
-                    <b>770 ₽</b>
+                    <b>129 ₴</b>
                   </div>
                   <div className="cart__item-remove">
                     <div className="button button--outline button--circle">
@@ -287,8 +280,8 @@ class Cart extends React.PureComponent {
                     />
                   </div>
                   <div className="cart__item-info">
-                    <h3>Сырный цыпленок</h3>
-                    <p>тонкое тесто, 26 см.</p>
+                    <h3>Pizza Milana</h3>
+                    <p>0.5kg.</p>
                   </div>
                   <div className="cart__item-count">
                     <div className="button button--outline button--circle cart__item-count-minus">
@@ -308,7 +301,7 @@ class Cart extends React.PureComponent {
                         />
                       </svg>
                     </div>
-                    <b>2</b>
+                    <b>1</b>
                     <div className="button button--outline button--circle cart__item-count-plus">
                       <svg
                         width="10"
@@ -328,7 +321,7 @@ class Cart extends React.PureComponent {
                     </div>
                   </div>
                   <div className="cart__item-price">
-                    <b>770 ₽</b>
+                    <b>129 ₴</b>
                   </div>
                   <div className="cart__item-remove">
                     <div className="button button--outline button--circle">
@@ -359,8 +352,8 @@ class Cart extends React.PureComponent {
                     />
                   </div>
                   <div className="cart__item-info">
-                    <h3>Сырный цыпленок</h3>
-                    <p>тонкое тесто, 26 см.</p>
+                    <h3>Pizza Milana</h3>
+                    <p>0.5kg.</p>
                   </div>
                   <div className="cart__item-count">
                     <div className="button button--outline button--circle cart__item-count-minus">
@@ -380,7 +373,7 @@ class Cart extends React.PureComponent {
                         />
                       </svg>
                     </div>
-                    <b>2</b>
+                    <b>1</b>
                     <div className="button button--outline button--circle cart__item-count-plus">
                       <svg
                         width="10"
@@ -400,7 +393,7 @@ class Cart extends React.PureComponent {
                     </div>
                   </div>
                   <div className="cart__item-price">
-                    <b>770 ₽</b>
+                    <b>129 ₴</b>
                   </div>
                   <div className="cart__item-remove">
                     <div className="button button--outline button--circle">
@@ -427,11 +420,11 @@ class Cart extends React.PureComponent {
                 <div className="cart__bottom-details">
                   <span>
                     {" "}
-                    Всего пицц: <b>3 шт.</b>{" "}
+                    All pizzas: <b>3 pc.</b>{" "}
                   </span>
                   <span>
                     {" "}
-                    Сумма заказа: <b>900 ₽</b>{" "}
+                    Summary: <b>900 ₴</b>{" "}
                   </span>
                 </div>
                 <div className="cart__bottom-buttons">
@@ -453,10 +446,10 @@ class Cart extends React.PureComponent {
                       />
                     </svg>
 
-                    <span>Вернуться назад</span>
+                    <span>Go back</span>
                   </a>
                   <div className="button pay-btn">
-                    <span>Оплатить сейчас</span>
+                    <span>Pay now</span>
                   </div>
                 </div>
               </div>
